@@ -7,7 +7,7 @@ function CommentBox({comments = [], setComments, postId}) {
   
   const handleComment = async() => {
     if(!user){
-      toast.warning('Please login to comment on the post')
+      alert('Please login to comment on the post')
       return;
     }
      const resp = await API.post('/post/comment',{
