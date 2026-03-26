@@ -1,0 +1,75 @@
+/* LIGHT MODE */
+body.light {
+  background-color: white;
+  color: black;
+}
+
+/* DARK MODE */
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+
+/* Card styling */
+body.dark .card {
+  background-color: #1e1e1e;
+  color: white;
+}
+
+/* Navbar */
+body.dark .navbar {
+  background-color: #1e1e1e !important;
+}
+
+/* Inputs */
+body.dark input,
+body.dark textarea {
+  background-color: #2c2c2c;
+  color: white;
+  border: 1px solid #555;
+}
+.loginpage{
+  min-height: 100vh;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+.login{
+  margin-top: 4rem;
+  max-width: 30rem;
+  width: 100%;
+  padding: 2rem;
+}
+.login-1{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+.login-2{
+  color: rgb(50, 4, 4);
+  font-size: xx-large;
+  
+}
+.loginform{
+  text-align: left;
+}
+.login-3{
+  margin-top: 0.5rem;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.login-4{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+.login-btn{
+ padding-left: 2rem;
+  padding-right: 2rem;
+}
+.posttime{
+  color: rgb(160, 111, 111);
+}
