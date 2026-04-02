@@ -26,7 +26,7 @@ function Navbar({theme, setTheme,post}) {
         <button onClick={toogleTheme} className="btn btn-outline-dark">{theme === "light" ? "🌙 Dark" : "☀️ Light"}</button>
         <button onClick={() => navigate('/login')} className="btn btn-outline-primary">{!user? ("Login") : 
         user.image ?
-        (<img src={user.image} alt = ""  style={{borderRadius:'50%',height:'40px',width:'60px'}}/>):
+        (<img src={user.image} alt = ""  style={{borderRadius:'50%',height:'40px',width:'40px'}}/>):
         (<div style={{borderRadius:'50%'}} >{user.name.charAt(0).toUpperCase()}</div>)
         }
         </button>
