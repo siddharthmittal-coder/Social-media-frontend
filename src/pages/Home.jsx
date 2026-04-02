@@ -18,9 +18,9 @@ function Home({ theme, setTheme }) {
    },[])
   return (
     <>
-      <Navbar theme={theme} setTheme={setTheme} />
+      <Navbar post = {posts} theme={theme} setTheme={setTheme} />
 
-      <div className="container mt-3">
+      <div className="container " style={{marginTop:'0.75rem'}}>
         <SearchBar post={posts} />
         <CreatePost fetchPosts = {fetchPosts}  />
 

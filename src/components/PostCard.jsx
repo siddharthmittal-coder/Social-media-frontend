@@ -23,11 +23,19 @@ function PostCard({ post }) {
   
 
   return (
-    <div id={post._id} className="card p-3 mb-3">
-      <div className="d-flex justify-content-between">
-        <h6>{post.username}</h6>
+    <div id={post._id} className="card" style={{padding:'0.75rem',marginBottom:'0.75rem'}}>
+      <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'0.5rem',gap:'0.3rem'}}>
+        <div style={{display:'flex',alignItems:'center',gap:'0.75rem'}}>
+          {/* In image src tag only used image urls image src tag not used any name or alphabet so we used nested condition */}
+          {
+            post.UserProfilePic ? (<img src={post.UserProfilePic  } alt=""  style={{borderRadius:'50%',width:'40px',height:'50px',objectFit:'cover'}} />) : (<div  style={{ borderRadius:'50%',height:'40px',width:'40px',border:'1px solid gray',textAlign:'center',fontWeight:'bolder',display:'flex',alignItems:'center',justifyContent:'center'}}> {post.username.charAt(0).toUpperCase()}</div>)
+          }
         
-        <FollowButton />
+       <h6>{post.username}</h6>
+        </div>
+        <div>
+        <FollowButton postId = {post.userId} />
+      </div>
       </div>
      <small className="posttime">{`${new Date(post.createdAt).toDateString()},${new Date(post.createdAt).toLocaleTimeString()}`}</small>
       <p>{post.content}</p>

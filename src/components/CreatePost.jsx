@@ -8,11 +8,11 @@ function CreatePost({fetchPosts}) {
 const user = JSON.parse(localStorage.getItem('user'))
   const handlePost = async() => {
     try {
-      const resp = await API.post('/post/createpost',{
-        userId:user._id,
-        content:text,
-        image
-      })
+      const formData = new FormData();
+      formData.append('userId',user._id);
+      formData.append('content',text);
+      formData.append('image',image);
+      const resp = await API.post('/post/createpost',formData)
       fetchPosts();
       toast.success(resp.data.message)
       setText('');
@@ -23,23 +23,17 @@ const user = JSON.parse(localStorage.getItem('user'))
   };
 
   return (
-    <div className="card p-3 mb-3">
+    <div className="card p-3 " style={{marginBottom:'1.2rem'}}>
       <h5>Create Post</h5>
 
       <textarea
-        className="form-control mb-2"
+        className="form-control " style={{marginBottom:'1rem'}}
         placeholder="What's on your mind?"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-
-      <input
-        type="text"
-        className="form-control mb-2"
-        placeholder="Image URL"
-        value={image}
-        onChange={(e) => setImage(e.target.value)}
-      />
+       <label htmlFor="inputFile">Put your image from gallery to create post</label>
+      <input onChange={(e) => setImage(e.target.files[0])} type="file" id="inputFile" className="form-control" required />
 
       <button className="btn btn-primary" onClick={handlePost}>
         Post

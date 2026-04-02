@@ -1,6 +1,6 @@
 function Profile() {
   return (
-    <div className="container mt-5">
+    <div className="container ">
       <h3>Profile Page</h3>
       <p>Your posts will appear here</p>
     </div>

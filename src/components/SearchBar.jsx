@@ -13,7 +13,7 @@ function SearchBar({post}) {
     }
   }
   return (
-    <div className="d-flex gap-2 my-3">
+    <div style={{display:'flex',gap:'0.75rem',marginBottom:'1rem'}}>
       <input
       value={serach}
       onChange={(e) => setSearch(e.target.value)}

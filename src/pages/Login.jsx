@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import '../App.css'
 import { useState } from 'react';
 import API from '../api';
@@ -10,20 +10,25 @@ function Login() {
  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [image,setImage] = useState('');
   const [password, setPassword] = useState('');
   const onSubmit = async(e)=>{
     e.preventDefault();
    try {
     if(currentState === 'Sign Up'){
-      const resp = await API.post('/user/signup',{
-        name,
-        email,
-        password
-      })
+      const formData = new FormData();
+      formData.append('name',name);
+      formData.append('email',email);
+      formData.append('password',password);
+      formData.append('image',image);
+      const resp = await API.post('/user/signup',formData)
       toast.success(resp.data.message);
       localStorage.removeItem('user')
       localStorage.setItem('user',JSON.stringify(resp.data.user))
       navigate('/')
+      setName('');
+      setEmail('');
+      setPassword('');
     } else{
       const resp = await API.post('/user/login',{
         email,
@@ -31,8 +36,10 @@ function Login() {
       })
       if(resp.data.user){
         localStorage.setItem('user',JSON.stringify(resp.data.user))
-        console.log(localStorage.getItem('user'))
+        
         navigate('/')
+        setEmail('');
+        setPassword('');
       } else{
         toast.error(resp.data.message)
       }
@@ -52,10 +59,16 @@ function Login() {
       </div>
       <div className="loginform">
         {currentState === 'Login'? '':
+        <>
+        <div className="md-6">
+    <label htmlFor="inputfile" className="form-label">Put your image from gallery</label>
+    <input  onChange={(e) => setImage(e.target.files[0])} type="file" className="form-control" id="inputfile"   required/>
+  </div>
       <div className="md-6">
     <label htmlFor="inputName14" className="form-label">Name</label>
     <input type="text" className="form-control" id="inputName14" value={name} onChange={(e) => setName(e.target.value)} required/>
   </div>
+  </>
 }
   
       <div className="md-6">

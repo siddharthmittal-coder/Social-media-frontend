@@ -22,7 +22,7 @@ function CommentBox({comments = [], setComments, postId}) {
     };
 
   return (
-    <div className="mt-2">
+    <div style={{marginTop:'0.6rem'}}>
       <input
         className="form-control"
         placeholder="Add comment"
@@ -30,7 +30,7 @@ function CommentBox({comments = [], setComments, postId}) {
         onChange={(e) => setText(e.target.value)}
       />
 
-      <button className="btn btn-sm btn-primary mt-1" onClick={handleComment}>
+      <button style={{marginTop:'0.6rem'}} className="btn btn-sm btn-primary " onClick={handleComment}>
         Comment
       </button>
 
