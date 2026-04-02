@@ -6,7 +6,10 @@ import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 function Login() {
   const [currentState, setCurrentState] = useState('Login');
-  const user = JSON.parse(localStorage.getItem('user'))
+  const storedUser = localStorage.getItem('user');
+
+  const user =storedUser? JSON.parse(storedUser):null;
+  
  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -22,6 +25,7 @@ function Login() {
       formData.append('password',password);
       formData.append('image',image);
       const resp = await API.post('/user/signup',formData)
+      console.log(resp.data)
       toast.success(resp.data.message);
       localStorage.removeItem('user')
       localStorage.setItem('user',JSON.stringify(resp.data.user))
