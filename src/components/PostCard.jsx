@@ -11,7 +11,7 @@ function PostCard({ post }) {
 
   const handleLike = async() => {
     if(!user){
-      toast.warning('Please login to like the post')
+      alert('Please login to like the post')
       return;
     }
    const resp = await API.post('/post/like',{
