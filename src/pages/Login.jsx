@@ -25,10 +25,19 @@ function Login() {
       formData.append('password',password);
       formData.append('image',image);
       const resp = await API.post('/user/signup',formData)
+     if(!resp.data.user){
+        toast.error(resp.data.message)
+        return;
+      
+     }
+     else{
       console.log(resp.data)
       toast.success(resp.data.message);
+    }
+      
       localStorage.removeItem('user')
       localStorage.setItem('user',JSON.stringify(resp.data.user))
+      localStorage.setItem('token',resp.data.token)
       navigate('/')
       setName('');
       setEmail('');
@@ -40,7 +49,7 @@ function Login() {
       })
       if(resp.data.user){
         localStorage.setItem('user',JSON.stringify(resp.data.user))
-        
+        localStorage.setItem('token',resp.data.token)
         navigate('/')
         setEmail('');
         setPassword('');

@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 
 import Profile from "./pages/Profile";
 import { ToastContainer } from "react-toastify";
+import MyAccount from "./pages/MyAccount";
+import Footer from "./components/Footer";
 
 function App() {
   const [theme, setTheme] = useState("");
@@ -24,15 +26,18 @@ function App() {
   return (
     <>
     <ToastContainer/>
+    
     <Router>
       <Routes>
         
         <Route path="/" element={<Home theme={theme} setTheme={setTheme} />} />
         <Route path="/login" element={<Login />} />
-        
+        <Route path = '/profile/:userId' element = {<MyAccount/>}/>
         <Route path="/profile" element={<Profile />} />
       </Routes>
+      <Footer/>
     </Router>
+     
     </>
   );
 }

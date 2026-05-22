@@ -5,7 +5,14 @@ import { useState } from "react";
 function Navbar({theme, setTheme,post}) {
   const [search,setSearch] = useState('')
   const navigate = useNavigate()
- const user = JSON.parse(localStorage.getItem('user'))
+//  const user = JSON.parse(localStorage.getItem('user'))
+const storedUser = localStorage.getItem('user');
+let user = null;
+   try {
+    user = storedUser ? JSON.parse(storedUser):null;
+   } catch (error) {
+    localStorage.removeItem('user')
+   }
   const toogleTheme = () =>{
     setTheme(theme === "light" ? "dark" : "light")
   }

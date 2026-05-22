@@ -5,6 +5,7 @@ import PostCard from "../components/PostCard";
 import { useEffect, useState } from "react";
 import { postsData } from "../data/dummyData";
 import API from "../api";
+import Footer from "../components/Footer";
 
 function Home({ theme, setTheme }) {
   const [posts, setPosts] = useState(postsData);
@@ -23,10 +24,13 @@ function Home({ theme, setTheme }) {
       <div className="container " style={{marginTop:'0.75rem'}}>
         <SearchBar post={posts} />
         <CreatePost fetchPosts = {fetchPosts}  />
-
+      
         {posts.map((post) => (
           <PostCard key={post._id} post={post} />
+        
+          
         ))}
+        
       </div>
     </>
   );
